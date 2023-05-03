@@ -82,6 +82,7 @@ async function downloadFileAndAddToZip(zip, fileURL) {
 		function processResult(result) {
 			if (result.done) {
 				console.log('Download completed', fileURL);
+				
 				return;
 			}
 
@@ -106,13 +107,11 @@ downloadBtnElem.onclick = async function() {
 	const files = separateURLs(urlTextareaElem.value);
 	
 	for (const fileURL of files) {
-		downloadFileAndAddToZip(zip, fileURL);
+		await downloadFileAndAddToZip(zip, fileURL);
 	}
 	
 	await zip.generateAsync({ type: 'blob' })
-		.then(function(content) {
-			saveAs(content, "files.zip");
-		});
+		.then(f => saveAs(f, "files.zip"));
 	
 	downloadBtnElem.innerText = `Download`;
 };
@@ -121,7 +120,9 @@ urlTextareaElem.oninput = function() {
 	queueItems.forEach(elem => elem.remove());
 
 	const separatedURLs = separateURLs(urlTextareaElem.value);
-
+	const uniqueURLs = [...new Set(separatedURLs)];
+	const duplicateURLs = separatedURLs.length - uniqueURLs.length;
+	
 	separatedURLs.forEach((url, idx) => {
 		const queueItemElem = createQueueItem(url, idx);
 
@@ -130,7 +131,7 @@ urlTextareaElem.oninput = function() {
 		queueItems.push(queueItemElem);
 	});
 
-	downloadBtnElem.innerText = `Download (${separatedURLs.length} files)`;
+	downloadBtnElem.innerText = `Download (${uniqueURLs.length} files${duplicateURLs ? `, ignoring ${duplicateURLs} duplicate` : ''})`;
 }
 
 separatorInputElem.oninput = function() {
