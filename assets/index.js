@@ -123,7 +123,7 @@ urlTextareaElem.oninput = function() {
 	const uniqueURLs = [...new Set(separatedURLs)];
 	const duplicateURLs = separatedURLs.length - uniqueURLs.length;
 	
-	separatedURLs.forEach((url, idx) => {
+	uniqueURLs.forEach((url, idx) => {
 		const queueItemElem = createQueueItem(url, idx);
 
 		rightPanelElem.appendChild(queueItemElem);
