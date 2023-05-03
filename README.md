@@ -1,7 +1,7 @@
 # Simple-Bulk-Downloader
 Simply downloads files from URLs in bulk, returns a single ZIP file.
 
-![](image.png)
+![](example.png)
 
 ### [[Open Tool]](https://hakorr.github.io/Simple-Bulk-Downloader/)
 
