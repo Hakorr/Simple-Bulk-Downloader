@@ -57,6 +57,8 @@ function setQueueItemStatus(url, status, message) {
 			downloadIndicator.style['box-shadow'] = '0px 0px 5px orange';
 			break;
 	}
+	
+	console.log(url, status, message);
 }
 
 // Function to download a single file and add it to the zip archive
