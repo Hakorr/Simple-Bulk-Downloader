@@ -104,9 +104,11 @@ downloadBtnElem.onclick = async function() {
 	resetQueueItems();
 
 	const zip = new JSZip();
-	const files = separateURLs(urlTextareaElem.value);
 	
-	for (const fileURL of files) {
+	const separatedURLs = separateURLs(urlTextareaElem.value);
+	const uniqueURLs = [...new Set(separatedURLs)];
+	
+	for (const fileURL of uniqueURLs) {
 		await downloadFileAndAddToZip(zip, fileURL);
 	}
 	
