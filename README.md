@@ -13,6 +13,10 @@ We have browser extensions that promise the world and then make you to download 
 
 For some reason nobody has a simple GUI bulk downloader that actually works. A simple single HTML page. That's all that it takes. Sure this bulk downloader can't make you dinner or tell you a bedtime story, but it can download the damn 50 cat pictures you want RIGHT. NOW. Not after you've studied computer science for 4 years to figure out how to use the command line. Just paste the URLs, and press download.
 
+## Heavy usage
+
+Simple Bulk Downloader doesn't yet have a feature to detect ratelimiting, sorry! It's a simple downloader for light usage for now.
+
 ## Special Thanks
 
 - [JSZip](https://github.com/Stuk/jszip)
